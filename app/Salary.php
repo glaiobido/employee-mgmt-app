@@ -15,4 +15,9 @@ class Salary extends Model
    * @var array
    */
   protected $dates = ['deleted_at'];
+
+  // One Employee - Has Many Salaries
+  public function employee() {
+    return $this->belongsTo('App\Employee');
+  }
 }

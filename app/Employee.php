@@ -15,4 +15,39 @@ class Employee extends Model
    * @var array
    */
   protected $dates = ['deleted_at'];
+
+  // One City - Has Many Employees
+  public function city() {
+    return $this->belongsTo('App\City');
+  }
+
+  // One State - Has Many Employees
+  public function state() {
+    return $this->belongsTo('App\State');
+  }
+
+  // One Country - Has Many Employees
+  public function country() {
+    return $this->belongsTo('App\Country');
+  }
+
+  // One Department - Has Many Employees
+  public function department() {
+    return $this->belongsTo('App\Department');
+  }
+
+  // One Division - Has Many Employees
+  public function division() {
+    return $this->belongsTo('App\Division');
+  }
+
+  // One Company - Has Many Employees
+  public function company() {
+    return $this->belongsTo('App\Company');
+  }
+
+  // One Employee - Has Many Salaries
+  public function salaries() {
+    return $this->hasMany('App\Salary', 'employee');
+  }
 }
