@@ -36,7 +36,7 @@
 
       <a href="#user-management-sub-list" class="list-group-item list-group-item-action bg-dark text-white border-0"
       data-toggle="collapse" role="button" aria-expanded="false" aria-controls="collapseExample">
-        <small>User Management</small> <i class="fas fa-fw fa-user-cog float-right mt-1"></i>
+        <small>User</small> <i class="fas fa-fw fa-user-cog float-right mt-1"></i>
       </a>
 
       <div class="collapse" id="user-management-sub-list" data-parent="#user-menu-list" style="border-left: 5px solid #6C757D;">
