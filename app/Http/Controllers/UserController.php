@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\User;
 
 class UserController extends Controller
 {
@@ -21,9 +24,15 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $data)
     {
-        //
+      return User::create([
+          'firstname' => $data['firstname'],
+          'lastname' => $data['lastname'],
+          'username' => $data['username'],
+          'email' => $data['email'],
+          'password' => Hash::make($data['password']),
+      ]);
     }
 
     /**
