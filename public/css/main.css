@@ -1,0 +1,137 @@
+html, body {
+	height: 100% !important;
+	letter-spacing: 2px;
+}
+
+button {
+	letter-spacing: 2px;
+}
+
+
+
+
+
+/*SCROLLBAR STYLING*/
+div::-webkit-scrollbar, ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+div::-webkit-scrollbar:vertical, ul::-webkit-scrollbar:vertical {
+    width: 8px;
+}
+div::-webkit-scrollbar:horizontal, ul::-webkit-scrollbar:horizontal {
+    height: 12px;
+}
+div::-webkit-scrollbar-thumb, ul::-webkit-scrollbar-thumb  {
+    background-color: #222D32;
+    border-radius: 10px;
+    border: 1px solid #222D32;
+}
+div::-webkit-scrollbar-track, ul::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent !important;
+}
+div.bg-dark::-webkit-scrollbar-thumb, ul.bg-dark::-webkit-scrollbar-thumb{
+    border: 2px solid #222D32;
+}
+div.bg-primary::-webkit-scrollbar-thumb, ul.bg-primary::-webkit-scrollbar-thumb{
+    border: 2px solid #038BB9;
+}
+
+
+
+#side-menu {
+	height: 100vh !important;
+	padding-top: 56px !important;
+	overflow-y: hidden;
+}
+.side-menu-wrapper {
+	height: 100% !important;
+	overflow-y: auto;
+	padding-bottom: 56px !important;
+}
+
+#mobile-side-menu-btn-opener {
+		display: none !important;
+	}
+
+@media only screen and (max-device-width: 767px) {
+	#side-menu {
+		width: 250px !important;
+		margin-left: -250px;
+		position: absolute;
+		z-index: 100;
+	}
+
+	#mobile-side-menu-btn-opener {
+		display: block !important;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	#side-menu {
+		width: 250px !important;
+		margin-left: -250px;
+		position: absolute;
+		z-index: 100;
+	}
+
+	#mobile-side-menu-btn-opener {
+		display: block !important;
+	}
+}
+
+@media only screen and (width: 768px){
+	#dashboard-content-parent {
+		width: 100% !important;
+		max-width: unset !important;
+		flex: unset !important;
+	}
+}
+
+
+
+
+
+#side-menu.show {
+	margin-left: 0px !important;
+	transition: 0.3s ease-in-out !important;
+}
+#side-menu.hidden {
+	margin-left: -250px !important;
+	transition: 0.3s ease-in-out !important;
+}
+
+#dashboard-content-parent {
+	height: 100vh !important;
+	padding-top: 56px;
+	position: relative;
+}
+
+#dashboard-content-parent .dashboard-content {
+	height: 100% !important; overflow-y: auto;
+	z-index: 1;
+}
+
+.disable-overflow {
+	overflow: hidden !important;
+}
+
+.content-backdrop {
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 2;
+}
+#mobile-side-menu-btn-opener {
+	position: absolute;
+	bottom: 10px;
+	right: 10px;
+	z-index: 1;
+}
+
+#user-menu-list .collapse {
+	background: #545B62 !important;
+}
