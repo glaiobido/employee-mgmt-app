@@ -12,7 +12,7 @@
 
     <form method="POST" action="{{ route('register') }}" id="user-form">
         @csrf
-
+        <input type="hidden" name="user_id" value="{{(isset($user->id)) ? $user->id : '0' }}">
         <div class="form-group row">
             <label for="firstname" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 

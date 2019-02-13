@@ -44,7 +44,7 @@ MODULE.User = (function() {
       e.preventDefault();
       var submitURL = ($data.action == 'add') ? 'users' : 'ajax-update-user' ;
       $.ajax({
-        url: 'users',
+        url: submitURL,
         type: 'POST',
         data: $('form#user-form').serialize(),
         beforeSend: function() {
@@ -55,6 +55,12 @@ MODULE.User = (function() {
             $('div#mainModal').modal('hide');
             $('div#mainModal .modal-body').empty();
             MODULE.Main.loadContent();
+            var text = ($data.action == 'add') ? 'added' : 'edited';
+            Swal.fire({
+                title: 'Success!',
+                text: 'User has been successfully '+ text,
+                type: 'success',
+              })
           }
         },
         complete: function(response) {

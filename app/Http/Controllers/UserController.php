@@ -88,14 +88,15 @@ class UserController extends Controller
       $validatedData = $request->validate([
           'firstname' => ['required', 'string', 'max:60'],
           'lastname' => ['required', 'string', 'max:60'],
-          'username' => ['required', 'string', 'max:20', 'unique:users'],
-          'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+          'username' => ['required', 'string', 'max:20'],
+          'email' => ['required', 'string', 'email', 'max:255']
       ]);
-
-      $user = User::find($request(['user_id']));
+      
+      $user = User::find($request['user_id']);
       $user->firstname = $request['firstname'];
       $user->lastname = $request['lastname'];
       $user->email = $request['email'];
+      $user->username = $request['username'];
       $user->save();
 
       return response()->json(['status' => 200]);
