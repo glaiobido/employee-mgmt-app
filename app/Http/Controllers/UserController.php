@@ -71,19 +71,10 @@ class UserController extends Controller
 
         // get user
         $user = User::find($query['user_id']);
-        return response()->view('layouts.Users.modal-form', ['user' => $user]);
+        return response()->view('layouts.Users.modal-form',
+                                  ['user' => $user, 'action' => $query['action']]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -92,9 +83,23 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+      $validatedData = $request->validate([
+          'firstname' => ['required', 'string', 'max:60'],
+          'lastname' => ['required', 'string', 'max:60'],
+          'username' => ['required', 'string', 'max:20'],
+          'email' => ['required', 'string', 'email', 'max:255']
+      ]);
+      
+      $user = User::find($request['user_id']);
+      $user->firstname = $request['firstname'];
+      $user->lastname = $request['lastname'];
+      $user->email = $request['email'];
+      $user->username = $request['username'];
+      $user->save();
+
+      return response()->json(['status' => 200]);
     }
 
     /**
@@ -105,7 +110,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return response()->json(['status' => 200]);
     }
 
     protected function validator(array $data)

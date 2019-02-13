@@ -1,26 +1,26 @@
-MODULE.User = (function() {
+MODULE.Department = (function() {
 
   var $data = {
-    user_id: 0,
+    department_id: 0,
     action: 'add'
   };
 
   function init() {
-    $('table#users-tbl').DataTable();
+    $('table#departments-tbl').DataTable();
     triggerModal();
-     removeUser();
+     removedepartment();
   }
 
   // Show modal
   function triggerModal() {
     // click
-    $('.new-user-btn, .edit-user-btn').on('click', function(e) {
+    $('.new-department-btn').on('click', function(e) {
       e.preventDefault();
       $data.action = $(this).attr('data-action');
-      $data.user_id = $(this).attr('data-id');
+
 
       $.ajax({
-        url: 'ajax-get-user-form',
+        url: 'ajax-get-department-form',
         type: 'GET',
         data: $data,
         beforeSend: function() {
@@ -42,11 +42,11 @@ MODULE.User = (function() {
     $('.modal-submit').unbind();
     $('.modal-submit').on('click', function(e) {
       e.preventDefault();
-      var submitURL = ($data.action == 'add') ? 'users' : 'ajax-update-user' ;
+
       $.ajax({
-        url: submitURL,
+        url: 'departments',
         type: 'POST',
-        data: $('form#user-form').serialize(),
+        data: $('form#department-form').serialize(),
         beforeSend: function() {
           // $('div.js-preloader').removeClass('invisible');
         },
@@ -55,12 +55,6 @@ MODULE.User = (function() {
             $('div#mainModal').modal('hide');
             $('div#mainModal .modal-body').empty();
             MODULE.Main.loadContent();
-            var text = ($data.action == 'add') ? 'added' : 'edited';
-            Swal.fire({
-                title: 'Success!',
-                text: 'User has been successfully '+ text,
-                type: 'success',
-              })
           }
         },
         complete: function(response) {
@@ -75,48 +69,30 @@ MODULE.User = (function() {
   }
 
   function errorMessages(error) {
-    $('form#user-form input.form-control').removeClass('is-invalid');
-    $('form#user-form span.invalid-feedback').empty();
+    $('form#department-form input.form-control').removeClass('is-invalid');
+    $('form#department-form span.invalid-feedback').empty();
     for (var e in error.errors) {
       console.log(error.errors[e])
-      $('form#user-form').find('input#'+ e).addClass('is-invalid');
-      $('form#user-form').find('input#'+ e).next().text(error.errors[e][0])
+      $('form#department-form').find('input#'+ e).addClass('is-invalid');
+      $('form#department-form').find('input#'+ e).next().text(error.errors[e][0])
 
     }
   }
 
-  function removeUser() {
-    $('.remove-user-btn').on('click', function() {
-      $data.user_id = $(this).attr('data-id');
+  function removedepartment() {
+    $('.remove-department-btn').on('click', function() {
+      $data.department_id = $(this).attr('data-id');
       Swal.fire({
           title: 'Are you sure?',
-          text: 'You are about to remove this user.',
+          text: 'You are about to remove this department.',
           type: 'error',
+          showConfirmButton: true,
           showCancelButton: true,
           confirmButtonColor: '#17a2b8',
           cancelButtonColor: '#343a40',
           confirmButtonText: 'Yes',
           cancelButtonText: 'No'
-        }).then((result) => {
-            if (result.value) {
-              $.ajax({
-                url: 'ajax-delete-user/'+$data.user_id,
-                type: 'GET',
-                data: $data,
-                success: function(response) {
-                  console.log(response);
-                  if (response.status == 200) {
-                    MODULE.Main.loadContent();
-                    Swal.fire({
-                      title: 'Successfully Removed',
-                      type: 'success'
-                    })
-
-                  }
-                }
-              });
-            }
-        });
+        })
     });
   }
 
