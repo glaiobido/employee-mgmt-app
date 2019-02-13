@@ -93,6 +93,8 @@ MODULE.User = (function() {
           text: 'You are about to remove this user.',
           type: 'error',
           showCancelButton: true,
+          confirmButtonColor: '#17a2b8',
+          cancelButtonColor: '#343a40',
           confirmButtonText: 'Yes',
           cancelButtonText: 'No'
         }).then((result) => {

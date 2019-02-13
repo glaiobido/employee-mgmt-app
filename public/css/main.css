@@ -135,3 +135,22 @@ div.bg-primary::-webkit-scrollbar-thumb, ul.bg-primary::-webkit-scrollbar-thumb{
 #user-menu-list .collapse {
 	background: #545B62 !important;
 }
+
+/* DataTables */
+
+.page-item.active .page-link {
+	background: #17a2b8;
+}
+
+.page-item.active .page-link {
+	border-color: #17a2b8;
+}
+
+.page-link {
+	background: #343a40;
+	color: #ffffff;
+}
+
+.page-link:hover {
+	color: #17a2b8;
+}

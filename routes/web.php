@@ -17,10 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['middleware' => ['auth']], function()
+{
+    Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('ajax-get-page-content', 'HomeController@loadPageContent');
-Route::get('ajax-get-user-form', 'UserController@show');
+    Route::get('ajax-get-page-content', 'HomeController@loadPageContent');
+    Route::get('ajax-get-user-form', 'UserController@show');
 
 Route::resource('users', 'UserController')->only(['store']);
 Route::post('ajax-update-user', 'UserController@update');

@@ -1,6 +1,10 @@
 <div class="row m-0 pt-2">
-  <div class="col-12">
+  <div class="col-9">
     <h1 class="display-4">User Profile</h1>
+
+  </div>
+
+  <div class="col-3 text-right mt-4">
     <button type="button"
             data-id="0"
             data-action="add"
@@ -31,14 +35,14 @@
             <td>{{ $user->lastname }}</td>
             <td>{{ $user->username }}</td>
             <td>{{ $user->email }}</td>
-            <td>
+            <td class="text-right">
               <button type="button"
                       data-id="{{ $user->id }}"
                       data-action="edit"
                       class="btn btn-outline-primary edit-user-btn"><i class="fas fa-user-edit"></i></button>
               <button type="button"
                       data-id="{{ $user->id }}"
-                      class="btn btn-outline-danger remove-user-btn"><i class="fas fa-user-times"></i></button>
+                      class="btn btn-dark remove-user-btn"><i class="fas fa-user-times"></i></button>
             </td>
           </tr>
         @endforeach
