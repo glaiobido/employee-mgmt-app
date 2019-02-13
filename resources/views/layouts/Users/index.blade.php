@@ -35,7 +35,7 @@
               <button type="button"
                       data-id="{{ $user->id }}"
                       data-action="edit"
-                      class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></button>
+                      class="btn btn-outline-primary edit-user-btn"><i class="fas fa-user-edit"></i></button>
               <button type="button"
                       data-id="{{ $user->id }}"
                       class="btn btn-outline-danger remove-user-btn"><i class="fas fa-user-times"></i></button>

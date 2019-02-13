@@ -14,10 +14,10 @@ MODULE.User = (function() {
   // Show modal
   function triggerModal() {
     // click
-    $('.new-user-btn').on('click', function(e) {
+    $('.new-user-btn, .edit-user-btn').on('click', function(e) {
       e.preventDefault();
       $data.action = $(this).attr('data-action');
-
+      $data.user_id = $(this).attr('data-id');
 
       $.ajax({
         url: 'ajax-get-user-form',
@@ -42,7 +42,7 @@ MODULE.User = (function() {
     $('.modal-submit').unbind();
     $('.modal-submit').on('click', function(e) {
       e.preventDefault();
-
+      var submitURL = ($data.action == 'add') ? 'users' : 'ajax-update-user' ;
       $.ajax({
         url: 'users',
         type: 'POST',
@@ -86,11 +86,29 @@ MODULE.User = (function() {
           title: 'Are you sure?',
           text: 'You are about to remove this user.',
           type: 'error',
-          showConfirmButton: true,
           showCancelButton: true,
           confirmButtonText: 'Yes',
           cancelButtonText: 'No'
-        })
+        }).then((result) => {
+            if (result.value) {
+              $.ajax({
+                url: 'ajax-delete-user/'+$data.user_id,
+                type: 'GET',
+                data: $data,
+                success: function(response) {
+                  console.log(response);
+                  if (response.status == 200) {
+                    MODULE.Main.loadContent();
+                    Swal.fire({
+                      title: 'Successfully Removed',
+                      type: 'success'
+                    })
+
+                  }
+                }
+              });
+            }
+        });
     });
   }
 
