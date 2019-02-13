@@ -1,6 +1,10 @@
 <div class="row m-0 pt-2">
-  <div class="col-12">
+  <div class="col-9">
     <h1 class="display-4">User Profile</h1>
+    
+  </div>
+
+  <div class="col-3 text-right mt-4">
     <button type="button"
             data-id="0"
             data-action="add"
