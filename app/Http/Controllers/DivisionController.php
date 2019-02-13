@@ -14,7 +14,7 @@ class DivisionController extends Controller
      */
     public function index()
     {
-        //
+        return response()->view('layouts.Divisions.index');
     }
 
     /**

@@ -14,7 +14,7 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        return response()->view('layouts.Department.index');
     }
 
     /**

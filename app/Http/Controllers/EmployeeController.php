@@ -14,7 +14,7 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        //
+        return response()->view('layouts.Employees.index');
     }
 
     /**

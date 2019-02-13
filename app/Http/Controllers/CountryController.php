@@ -14,7 +14,7 @@ class CountryController extends Controller
      */
     public function index()
     {
-        //
+        return response()->view('layouts.Country.index');
     }
 
     /**
