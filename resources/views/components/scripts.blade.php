@@ -11,6 +11,9 @@
 <script src="{{ asset('js/modules/main-module.js') }}"></script>
 <script src="{{ asset('js/modules/department-module.js') }}"></script>
 <script src="{{ asset('js/modules/division-module.js') }}"></script>
+<script src="{{ asset('js/modules/country-module.js') }}"></script>
+<script src="{{ asset('js/modules/state-module.js') }}"></script>
+<script src="{{ asset('js/modules/city-module.js') }}"></script>
 <script src="{{ asset('js/modules/user-module.js') }}"></script>
 
 

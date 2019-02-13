@@ -35,6 +35,15 @@ MODULE.Main = (function() {
       case 'division':
         MODULE.Division.init();
         break;
+      case 'country':
+        MODULE.Country.init();
+        break;
+      case 'state':
+        MODULE.State.init();
+        break;
+      case 'city':
+        MODULE.City.init();
+        break;
       case 'user-list':
         MODULE.User.init();
         break;
