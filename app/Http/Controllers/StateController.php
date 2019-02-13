@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\State;
+use App\Country;
 use Illuminate\Http\Request;
 
 class StateController extends Controller
@@ -35,7 +36,14 @@ class StateController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'country' => ['required', 'integer'],
+            'name' => ['required', 'string', 'max:60'],
+        ]);
+
+        $state = State::create($request->all());
+                
+        return response()->json(['data' => $state, 'status' => 200]);
     }
 
     /**
@@ -46,7 +54,8 @@ class StateController extends Controller
      */
     public function show(State $state)
     {
-        //
+        $data = Country::get();
+        return response()->view('layouts.State.modal-form', ['countries' => $data ]);
     }
 
     /**
