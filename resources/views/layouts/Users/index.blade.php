@@ -31,14 +31,14 @@
             <td>{{ $user->lastname }}</td>
             <td>{{ $user->username }}</td>
             <td>{{ $user->email }}</td>
-            <td>
+            <td class="text-right">
               <button type="button"
                       data-id="{{ $user->id }}"
                       data-action="edit"
-                      class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></button>
+                      class="btn btn-info"><i class="fas fa-user-edit"></i></button>
               <button type="button"
                       data-id="{{ $user->id }}"
-                      class="btn btn-outline-danger remove-user-btn"><i class="fas fa-user-times"></i></button>
+                      class="btn btn-dark remove-user-btn"><i class="fas fa-user-times"></i></button>
             </td>
           </tr>
         @endforeach
