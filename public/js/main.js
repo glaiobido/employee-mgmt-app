@@ -1,4 +1,13 @@
+
+// Global Variables
+const MODULE = {};
 $(document).ready(function(){
+
+
+
+	var $mainContent = $('div#main-content');
+
+	// Sidebar Toggles
 	$(window).on('resize', function(){
 		var win = $(this);
 
@@ -14,7 +23,7 @@ $(document).ready(function(){
 	$("#mobile-side-menu-btn-opener").on('click', function(event){
 		$("#side-menu").addClass('show');
 		$("#side-menu").removeClass('hidden');
-		
+
 		$(".content-backdrop").toggleClass('d-none');
 		$(".dashboard-content").addClass('disable-overflow');
 	});
@@ -22,7 +31,7 @@ $(document).ready(function(){
 	$(".content-backdrop").on('click', function(event){
 		$("#side-menu").removeClass('show');
 		$("#side-menu").addClass('hidden');
-		
+
 		$(".content-backdrop").toggleClass('d-none');
 		$(".dashboard-content").removeClass('disable-overflow');
 	});
