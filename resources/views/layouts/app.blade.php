@@ -19,6 +19,9 @@
         {{-- NAVBAR --}}
         @include('components.navbar')
 
+        {{-- Modal Container --}}
+        @include('components.modal')
+
         @auth
           <div class="row m-0">
             {{-- SIDEBAR --}}
