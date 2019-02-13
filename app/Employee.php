@@ -16,6 +16,22 @@ class Employee extends Model
    */
   protected $dates = ['deleted_at'];
 
+  protected $fillable = [
+      'firstname',
+      'lastname',
+      'middlename',
+      'address',
+      'zip',
+      'age',
+      'date_hired',
+      'birthdate',
+      'country',
+      'state',
+      'city',
+      'department',
+      'division',
+  ];
+
   // One City - Has Many Employees
   public function city() {
     return $this->belongsTo('App\City');

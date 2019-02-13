@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Employee;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class EmployeeController extends Controller
 {
@@ -14,7 +15,12 @@ class EmployeeController extends Controller
      */
     public function index()
     {
-        return response()->view('layouts.Employees.index');
+        $employees = Employee::with([ 'department','division',
+                                      'country',
+                                      'state',
+                                      'city',
+                                      'salaries'])->get();
+        return response()->view('layouts.Employees.index', ['employees' => $employees]);
     }
 
     /**
@@ -22,9 +28,25 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(array $data)
     {
-        //
+      return Employee::create([
+          'firstname' => $data['firstname'],
+          'lastname' => $data['lastname'],
+          'middlename' => $data['middlename'],
+          'age' => $data['age'],
+          'address' => $data['address'],
+          'zip' => $data['zip'],
+          'birthdate' => ($data['birthdate']) ?  Carbon::parse($data['birthdate']) : null,
+          'picture' => null,
+          'date_hired' => ($data['date_hired']) ? Carbon::parse($data['date_hired']) : null
+          // 'department' => $data['department'],
+          // 'division' => $data['division'],
+          // 'company' => $data['company'],
+          // 'country' => $data['country'],
+          // 'state' => $data['state'],
+          // 'city' => $data['city']
+      ]);
     }
 
     /**
@@ -35,7 +57,14 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $validatedData = $request->validate([
+          'firstname' => ['required', 'string', 'max:60'],
+          'lastname' => ['required', 'string', 'max:60'],
+          'middlename' => ['required', 'string', 'max:60']
+      ]);
+
+      $employee = $this->create($request->all());
+      return response()->json(['data' => $employee, 'status' => 200]);
     }
 
     /**
@@ -44,9 +73,14 @@ class EmployeeController extends Controller
      * @param  \App\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show(Request $request)
     {
-        //
+      $query = $request->query();
+
+      // get user
+      $employee = Employee::find($query['employee_id']);
+      return response()->view('layouts.Employees.modal-form',
+                                ['employee' => $employee, 'action' => $query['action']]);
     }
 
     /**

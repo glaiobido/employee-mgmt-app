@@ -22,8 +22,15 @@ Route::group(['middleware' => ['auth']], function()
     Route::get('/home', 'HomeController@index')->name('home');
 
     Route::get('ajax-get-page-content', 'HomeController@loadPageContent');
-    Route::get('ajax-get-user-form', 'UserController@show');
 
-Route::resource('users', 'UserController')->only(['store']);
-Route::post('ajax-update-user', 'UserController@update');
-Route::get('ajax-delete-user/{id}', 'UserController@destroy');
+
+    Route::resource('users', 'UserController')->only(['store']);
+    Route::get('ajax-get-user-form', 'UserController@show');
+    Route::post('ajax-update-user', 'UserController@update');
+    Route::get('ajax-delete-user/{id}', 'UserController@destroy');
+
+    Route::get('ajax-get-employee-form', 'EmployeeController@show');
+    Route::resource('employees', 'EmployeeController')->only(['store']);
+
+
+});

@@ -10,6 +10,7 @@
 {{-- CUSTOM MODULES --}}
 <script src="{{ asset('js/modules/main-module.js') }}"></script>
 <script src="{{ asset('js/modules/user-module.js') }}"></script>
+<script src="{{ asset('js/modules/employee-module.js') }}"></script>
 
 
 {{-- Inital Call to Custom Modules On Load Page --}}

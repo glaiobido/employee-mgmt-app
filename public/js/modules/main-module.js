@@ -32,6 +32,9 @@ MODULE.Main = (function() {
       case 'user-list':
         MODULE.User.init();
         break;
+      case 'employees':
+        MODULE.Employee.init();
+        break;
       default:
 
     }
