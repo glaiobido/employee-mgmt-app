@@ -2,7 +2,9 @@
   <div class="col-12">
     <h1 class="display-4">User Profile</h1>
     <button type="button"
-            class="btn btn-outline-dark new-user"><i class="fas fa-user-plus"></i></button>
+            data-id="0"
+            data-action="add"
+            class="btn btn-outline-dark new-user-btn"><i class="fas fa-user-plus"></i></button>
   </div>
 </div>
 
@@ -10,37 +12,36 @@
   <div class="col-12" id="page-content">
 
     {{-- table --}}
-    <table class="table table-hover">
+    <table class="table table-hover" id="users-tbl">
       <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Username</th>
+          <th scope="col">Email</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td></td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td colspan="2">Larry the Bird</td>
-          <td>@twitter</td>
-          <td></td>
-        </tr>
+        @foreach ($users as $key => $user)
+          <tr>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->firstname }}</td>
+            <td>{{ $user->lastname }}</td>
+            <td>{{ $user->username }}</td>
+            <td>{{ $user->email }}</td>
+            <td>
+              <button type="button"
+                      data-id="{{ $user->id }}"
+                      data-action="edit"
+                      class="btn btn-outline-primary"><i class="fas fa-user-edit"></i></button>
+              <button type="button"
+                      data-id="{{ $user->id }}"
+                      class="btn btn-outline-danger remove-user-btn"><i class="fas fa-user-times"></i></button>
+            </td>
+          </tr>
+        @endforeach
       </tbody>
     </table>
   </div>

@@ -8,6 +8,7 @@
 <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 
 {{-- CUSTOM STYLE LINKS --}}
+<link href="{{ asset('css/custom-loader.css') }}" rel="stylesheet">
 
 {{-- Datatable --}}
 <link rel="stylesheet" type="text/css" href="{{ asset('js/plugins/datatable/datatables.min.css') }}"/>

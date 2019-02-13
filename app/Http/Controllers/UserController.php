@@ -16,7 +16,10 @@ class UserController extends Controller
      */
     public function index()
     {
-        return response()->view('layouts.Users.index');
+        // $users = User::where('id', '<>', Auth::user()->id);
+        $users = User::where('id', '<>', auth()->user()->id)->get();
+
+        return response()->view('layouts.Users.index', ['users' => $users]);
     }
 
     /**
@@ -26,6 +29,7 @@ class UserController extends Controller
      */
     public function create(array $data)
     {
+
       return User::create([
           'firstname' => $data['firstname'],
           'lastname' => $data['lastname'],
@@ -43,18 +47,31 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'firstname' => ['required', 'string', 'max:60'],
+            'lastname' => ['required', 'string', 'max:60'],
+            'username' => ['required', 'string', 'max:20', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
+
+        $user = $this->create($request->all());
+        return response()->json(['data' => $user, 'status' => 200]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  Request $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $query = $request->query();
+
+        // get user
+        $user = User::find($query['user_id']);
+        return response()->view('layouts.Users.modal-form', ['user' => $user]);
     }
 
     /**
@@ -89,5 +106,16 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'firstname' => ['required', 'string', 'max:60'],
+            'lastname' => ['required', 'string', 'max:60'],
+            'username' => ['required', 'string', 'max:20', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ]);
     }
 }

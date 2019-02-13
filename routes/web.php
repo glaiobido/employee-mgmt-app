@@ -20,3 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('ajax-get-page-content', 'HomeController@loadPageContent');
+Route::get('ajax-get-user-form', 'UserController@show');
+
+Route::resource('users', 'UserController')->only([
+    'store'
+]);
