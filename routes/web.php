@@ -23,8 +23,18 @@ Route::group(['middleware' => ['auth']], function()
 
     Route::get('ajax-get-page-content', 'HomeController@loadPageContent');
     Route::get('ajax-get-user-form', 'UserController@show');
+    Route::get('ajax-get-department-form', 'DepartmentController@show');
+    Route::get('ajax-get-division-form', 'DivisionController@show');
 
     Route::resource('users', 'UserController')->only([
+        'store'
+    ]);
+    
+    Route::resource('departments', 'DepartmentController')->only([
+        'store'
+    ]);
+
+    Route::resource('divisions', 'DivisionController')->only([
         'store'
     ]);
 

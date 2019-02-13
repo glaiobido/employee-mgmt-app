@@ -10,7 +10,7 @@
 
   <div class="container-fluid">
 
-    <form method="POST" action="{{ route('register') }}" id="user-form">
+    <form method="POST" action="{{ route('users.store') }}" id="user-form">
         @csrf
 
         <div class="form-group row">

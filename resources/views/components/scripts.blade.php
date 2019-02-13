@@ -9,6 +9,8 @@
 
 {{-- CUSTOM MODULES --}}
 <script src="{{ asset('js/modules/main-module.js') }}"></script>
+<script src="{{ asset('js/modules/department-module.js') }}"></script>
+<script src="{{ asset('js/modules/division-module.js') }}"></script>
 <script src="{{ asset('js/modules/user-module.js') }}"></script>
 
 
