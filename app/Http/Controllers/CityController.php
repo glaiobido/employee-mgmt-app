@@ -55,7 +55,7 @@ class CityController extends Controller
     public function show(City $city)
     {
         $data = State::get();
-        return response()->view('layouts.City.modal-form', ['countries' => $data ]);
+        return response()->view('layouts.City.modal-form', ['states' => $data ]);
     }
 
     /**
