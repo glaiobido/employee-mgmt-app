@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
-  <a class="navbar-brand" href="#">
-    <span class="text-warning">{{ config('app.name', 'Laravel') }}</span>
+<a class="navbar-brand" href="{{ route('home') }}">
+    <span class="text-white">{{ config('app.name', 'Laravel') }}</span>
   </a>
   <button type="button" class="navbar-toggler border-0" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <i class="fas fa-fw fa-bars"></i>
