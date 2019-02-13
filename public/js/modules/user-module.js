@@ -88,6 +88,8 @@ MODULE.User = (function() {
           type: 'error',
           showConfirmButton: true,
           showCancelButton: true,
+          confirmButtonColor: '#17a2b8',
+          cancelButtonColor: '#343a40',
           confirmButtonText: 'Yes',
           cancelButtonText: 'No'
         })
