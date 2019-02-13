@@ -29,6 +29,21 @@ MODULE.Main = (function() {
 
   function loadModuleScript() {
     switch ($data.page) {
+      case 'department':
+        MODULE.Department.init();
+        break;
+      case 'division':
+        MODULE.Division.init();
+        break;
+      case 'country':
+        MODULE.Country.init();
+        break;
+      case 'state':
+        MODULE.State.init();
+        break;
+      case 'city':
+        MODULE.City.init();
+        break;
       case 'user-list':
         MODULE.User.init();
         break;

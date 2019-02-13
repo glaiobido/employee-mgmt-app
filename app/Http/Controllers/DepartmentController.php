@@ -35,7 +35,13 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:60'],
+        ]);
+
+        $department = Department::create($request->all());
+                
+        return response()->json(['data' => $department, 'status' => 200]);
     }
 
     /**
@@ -46,7 +52,7 @@ class DepartmentController extends Controller
      */
     public function show(Department $department)
     {
-        //
+        return response()->view('layouts.Department.modal-form');
     }
 
     /**

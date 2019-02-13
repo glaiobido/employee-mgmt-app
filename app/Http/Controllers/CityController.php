@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\City;
+use App\State;
 use Illuminate\Http\Request;
 
 class CityController extends Controller
@@ -35,7 +36,14 @@ class CityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'state' => ['required', 'integer'],
+            'name' => ['required', 'string', 'max:60'],
+        ]);
+
+        $city = City::create($request->all());
+                
+        return response()->json(['data' => $city, 'status' => 200]);
     }
 
     /**
@@ -46,7 +54,8 @@ class CityController extends Controller
      */
     public function show(City $city)
     {
-        //
+        $data = State::get();
+        return response()->view('layouts.City.modal-form', ['states' => $data ]);
     }
 
     /**

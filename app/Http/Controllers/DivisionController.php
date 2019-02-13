@@ -35,7 +35,13 @@ class DivisionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => ['required', 'string', 'max:60'],
+        ]);
+
+        $division = Division::create($request->all());
+                
+        return response()->json(['data' => $division, 'status' => 200]);
     }
 
     /**
@@ -44,9 +50,9 @@ class DivisionController extends Controller
      * @param  \App\Division  $division
      * @return \Illuminate\Http\Response
      */
-    public function show(Division $division)
+    public function show(Request $request)
     {
-        //
+        return response()->view('layouts.Divisions.modal-form');
     }
 
     /**

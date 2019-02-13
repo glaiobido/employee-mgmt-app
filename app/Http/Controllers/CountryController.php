@@ -35,7 +35,14 @@ class CountryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'country_code' => ['required', 'string', 'max:3'],
+            'name' => ['required', 'string', 'max:60'],
+        ]);
+
+        $country = Country::create($request->all());
+                
+        return response()->json(['data' => $country, 'status' => 200]);
     }
 
     /**
@@ -46,7 +53,7 @@ class CountryController extends Controller
      */
     public function show(Country $country)
     {
-        //
+        return response()->view('layouts.Country.modal-form');
     }
 
     /**
